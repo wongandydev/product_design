@@ -2,369 +2,391 @@
 
 ## 🎯 Quick Summary
 
-When user says: **"Create me a [FEATURE] interview project"**
+When user says: **"Create me an iOS interview project"**
 
-You create:
-1. **Working Xcode project** that opens and runs immediately (no setup!)
-2. **Functional UI** with SwiftUI layouts ready to use
-3. **TODO comments** where engineer implements core logic (Models, Services, ViewModels)
-4. **Markdown guides** (README, INTERVIEW_GUIDE, SOLUTION_CHECKLIST, PROJECT_STRUCTURE)
-5. **SOLUTION.md** with complete working implementation for reference
+**You MUST ask first:**
+- "Are you looking for a **45-minute interview** or a **take-home project**?"
 
-**Reference:** Use `01_weather_app_attempt1/` as your template for EVERYTHING (structure, style, content, code patterns)
+Then you create:
+1. **Working Xcode project** with boilerplate code and mock data
+2. **INSTRUCTIONS.md** - Interview prompt (mimics real interview email)
+3. **CLAUDE.md** (in project folder) - Reviewer AI instructions
+
+**Reference:** Use `01_weather_app_attempt1/` as your template for code patterns and structure
+
+---
 
 ## Purpose
-This file contains instructions for Claude agents to generate ready-to-run iOS interview practice projects. When a user requests a new interview project, create a complete, immediately-runnable Xcode project with TODO markers where the engineer needs to implement code.
+
+This file guides Claude agents to generate **realistic iOS interview practice projects**. The user will:
+1. Get a working Xcode project with an interview prompt
+2. Implement the feature in the allotted time
+3. Compress/zip the completed project
+4. Have another AI agent review it using the project's CLAUDE.md
+
+This mimics a real interview experience with AI-powered feedback.
+
+---
 
 ## User Command Examples
-- "Create me a sample project to create a feature that can be built in 45 mins for an iOS engineer"
-- "Generate a new interview challenge for a photo gallery app"
-- "Make me a recipe finder interview project"
 
-**Your job:** Create a complete folder with a working Xcode project that the user can **open and start coding immediately**—just like in a real interview. Zero setup time!
+- "Create me an iOS interview project"
+- "Generate a new interview challenge"
+- "Make me a take-home iOS project"
 
-## Reference Project
-**CRITICAL:** Use `/01_weather_app_attempt1/` as your reference for:
-- Folder structure
-- File naming conventions
-- TODO comment style
-- Level of implementation vs. TODOs
-- Markdown file tone and content
+---
 
-## Project Structure Template
-Each interview project MUST follow this exact structure:
+## Step 1: Ask About Interview Type
 
+**CRITICAL:** Always ask first!
+
+**Question to user:**
+> "Are you looking for a **45-minute interview** or a **take-home project**?"
+
+**Adjust scope based on answer:**
+- **45-minute interview:**
+  - Simple API integration
+  - List view only (no detail view)
+  - 1-2 core features
+  - Example: "Fetch and display list of movies"
+
+- **Take-home project:**
+  - Full CRUD or complex feature
+  - List + detail views
+  - Search/filter functionality
+  - Error handling, edge cases
+  - 3-5 hours of work
+  - Example: "Build movie browser with search, detail view, and favorites"
+
+---
+
+## Step 2: Choose Challenge Topic
+
+**Search the internet** for popular interview challenges and real APIs with mock data.
+
+**Popular challenge types:**
+- Movie/TV browser (TMDB API)
+- Photo gallery (Unsplash, Pexels)
+- Weather app (OpenWeatherMap)
+- News feed (NewsAPI)
+- GitHub repo search (GitHub API)
+- Recipe finder (TheMealDB, Spoonacular)
+- Book search (Google Books)
+- Crypto tracker (CoinGecko)
+
+**Look up:**
+- Real API endpoints
+- Sample JSON responses
+- Authentication requirements (prefer APIs with free tier or no auth)
+- Mock data examples
+
+---
+
+## Step 3: Create Project Structure
+
+### Folder Structure:
 ```
 [NN]_[feature]_app_attempt1/
-├── README.md                          # Project requirements (see 01_weather_app_attempt1/README.md)
-├── INTERVIEW_GUIDE.md                 # Interview approach guide (see reference)
-├── SOLUTION_CHECKLIST.md              # Verification checklist (see reference)
-├── PROJECT_STRUCTURE.md               # Getting started guide (see reference)
-└── [AppName]/                         # ⚠️ WORKING XCODE PROJECT - Must open in Xcode immediately
-    ├── [AppName].xcodeproj/           # ✅ Created and configured
-    │   └── project.pbxproj            # ✅ Valid Xcode project file
-    │
-    └── [AppName]/                     # Main app target
-        ├── [AppName]App.swift         # ✅ SwiftUI entry point (working)
-        ├── ContentView.swift          # ✅ Optional: can be removed if not needed
-        ├── Info.plist                 # ✅ App configuration
-        ├── Assets.xcassets/           # ✅ Asset catalog
-        │
+├── INSTRUCTIONS.md           # Interview prompt for the user
+├── CLAUDE.md                 # AI reviewer instructions
+└── [AppName]/                # Working Xcode project
+    ├── [AppName].xcodeproj/
+    └── [AppName]/
+        ├── [AppName]App.swift
+        ├── Info.plist
+        ├── Assets.xcassets/
         ├── Models/
-        │   └── [Feature]Model.swift   # ⚠️ Has structure + TODO comments
-        │
+        │   └── [Feature]Model.swift
         ├── Services/
-        │   └── [Feature]Service.swift # ⚠️ Has method signatures + TODO implementation
-        │
+        │   └── [Feature]Service.swift
         ├── ViewModels/
-        │   └── [Feature]ViewModel.swift # ⚠️ Has @Published properties + TODO logic
-        │
+        │   └── [Feature]ViewModel.swift
         ├── Views/
-        │   └── [Feature]View.swift    # ✅ Functional UI layout (engineer fills in logic)
-        │
+        │   └── [Feature]View.swift
         └── Helpers/
-            └── MockData.swift         # ✅ Sample data for testing (optional)
+            └── MockData.swift
 ```
 
-**✅ = Fully working code**
-**⚠️ = Working structure with TODO comments where engineer implements logic**
+### What to include:
+- ✅ Working Xcode project (opens and runs immediately)
+- ✅ Boilerplate UI code (TextField, Button, List, NavigationStack)
+- ✅ Mock data for testing
+- ✅ Method signatures and property declarations
+- ⚠️ Incomplete implementation (user fills in logic)
 
-## Step-by-Step: Creating a New Interview Project
+---
 
-### Step 1: Understand the Feature Request
-When the user says "create a [FEATURE] interview project", determine:
-1. **Feature scope** - What API/data source makes sense?
-2. **Core functionality** - Search? List? Detail view? CRUD?
-3. **Time target** - Default to 45 minutes unless user specifies
+## Step 4: Write INSTRUCTIONS.md
 
-### Step 2: Choose Challenge Parameters
+**Style:** Mimic a real interview prompt email
 
-**Challenge Type** (pick one that fits):
-- **API Integration** - Fetch and display data from REST API (most common)
-- **List + Detail** - Display collection, navigate to detail screen
-- **Search/Filter** - User searches and sees filtered results
-- **CRUD Operations** - Create, read, update, delete items
-- **Data Persistence** - Save data locally (bonus feature)
+**Include:**
+1. **Context** - Brief intro (company name optional, or use "Company XYZ")
+2. **Task** - What feature to build
+3. **Requirements** - Must-have features (3-5 bullet points)
+4. **Technical constraints** - SwiftUI, MVVM, async/await, etc.
+5. **Time limit** - 45 minutes or "take-home, submit within 48 hours"
+6. **API information** - Endpoint, sample JSON, how to use mock data
+7. **Evaluation criteria** - What they're looking for
+8. **Submission** - "Zip the project when done"
 
-**Popular Challenge Ideas:**
-- Weather app (API: OpenWeatherMap)
-- Recipe finder (API: Spoonacular, TheMealDB)
-- Photo gallery (API: Unsplash, Pexels)
-- Movie browser (API: TMDB)
-- News feed (API: NewsAPI)
-- GitHub repo search (API: GitHub REST API)
-- Book search (API: Google Books)
+**Example structure:**
+```markdown
+# iOS Engineer Interview Challenge
 
-**Difficulty:**
+## Overview
+Welcome! We'd like you to build a simple [FEATURE] app to demonstrate your iOS development skills.
 
-- **45 min** = Simple list + API integration (default)
-- **60 min** = List + detail + search + state management
+## Task
+Build a SwiftUI app that allows users to [CORE FUNCTIONALITY].
 
-### Step 3: Create the Xcode Project
+## Requirements
+- [ ] Fetch data from the provided API endpoint
+- [ ] Display results in a scrollable list
+- [ ] Handle loading and error states
+- [ ] Use MVVM architecture pattern
+- [ ] Use modern Swift (async/await, Codable)
 
-**CRITICAL:** The Xcode project MUST be immediately runnable. Follow these steps:
+## Time Limit
+You have **45 minutes** to complete this challenge.
 
-1. **Copy the reference project structure:**
-   ```bash
-   # Use 01_weather_app_attempt1/WeaherApp/ as your template
-   # Copy the .xcodeproj structure exactly
-   ```
+## API Information
+**Endpoint:** `https://api.example.com/movies`
 
-2. **Create working Xcode project files:**
-   - `.xcodeproj/project.pbxproj` - Use reference as template, update UUIDs and names
-   - `[AppName]App.swift` - SwiftUI entry point (fully working)
-   - `Info.plist` - Basic app configuration
-   - `Assets.xcassets/` - Asset catalog (can be empty)
+**Sample Response:**
+```json
+{
+  "results": [
+    {"id": 1, "title": "Example Movie", ...}
+  ]
+}
+```
 
-3. **The engineer should be able to:**
-   - ✅ Open `[AppName].xcodeproj` in Xcode
-   - ✅ Press ⌘+R and see the app launch on simulator
-   - ✅ See a basic UI (search field, button, etc.)
-   - ⚠️ Fill in TODO comments to make features work
+**Mock Data:** We've included `MockData.swift` for offline testing.
 
-4. **What NOT to do:**
-   - ❌ Don't create just Swift files without an Xcode project
-   - ❌ Don't require the engineer to "create a new project first"
-   - ❌ Don't provide setup scripts—the project should just work
+## What We're Looking For
+- Clean, readable code
+- Proper error handling
+- SwiftUI best practices
+- Appropriate architecture
 
-### Step 4: Create the Folder Structure
+## Submission
+When finished, compress the entire project folder and submit.
 
-**Use `/01_weather_app_attempt1/` as your EXACT template:**
+## Getting Started
+1. Open `[AppName].xcodeproj` in Xcode
+2. Run the app (⌘+R) to see the boilerplate UI
+3. Implement the required functionality
+4. Test with mock data first, then try the real API
 
-1. Create folder: `[NN]_[feature]_app_attempt1/`
-2. Copy structure from weather app:
-   - Same markdown files (README, INTERVIEW_GUIDE, etc.)
-   - Same Xcode project structure
-   - Same Models/, Services/, ViewModels/, Views/ folders
-3. Update all content for the new feature
-4. Keep the same TODO comment style
+Good luck!
+```
 
-### Step 5: Required Markdown Files
+---
 
-Copy the style and structure from `01_weather_app_attempt1/` for these files:
+## Step 5: Write CLAUDE.md (In Project Folder)
 
-#### README.md (see 01_weather_app_attempt1/README.md)
-- Overview of the challenge
-- Time allocation (45-60 min)
-- Core requirements (must-have features)
-- Technical requirements (architecture, error handling, UI)
-- Bonus features (nice-to-have)
-- Evaluation criteria
-- **API information** (endpoints, sample JSON response, auth if needed)
-- Getting started instructions
-- Interview tips
+**Purpose:** Guide the AI reviewer to act as both an interviewer and a coach.
 
-#### INTERVIEW_GUIDE.md (see reference)
-- How to approach the interview (phases)
-- Example thought process and dialogue
-- Key technical topics to discuss
-- Time management breakdown
-- Red flags to avoid
-- Green flags to demonstrate
+**Include:**
+1. **Role** - "You are an iOS engineering interviewer"
+2. **Task** - "Review this completed interview project"
+3. **Evaluation criteria** - What to look for
+4. **Feedback format** - Interviewer + coach perspective
+5. **Reference** - Point to INSTRUCTIONS.md for requirements
 
-#### SOLUTION_CHECKLIST.md (see reference)
-- Core functionality checklist
-- Code organization checklist
-- Error handling checklist
-- UI/UX checklist
-- iOS best practices checklist
-- Architecture checklist
-- Bonus features checklist
-- Self-review questions
-- Interview performance rubric
+**Template:**
+```markdown
+# AI Reviewer Instructions - iOS Interview Project
 
-#### PROJECT_STRUCTURE.md (see reference)
-- Visual directory tree
-- Getting started steps (should be: "Open .xcodeproj and press ⌘+R")
-- File descriptions
-- Implementation tips
+## Your Role
+You are an experienced iOS engineering interviewer reviewing a candidate's submission for a **[45-minute interview / take-home project]** challenge.
 
-#### SOLUTION.md ⚠️ NEW REQUIREMENT
-**This file contains the complete, working implementation for another agent to use as reference.**
+## Interview Task
+Read `INSTRUCTIONS.md` to understand what the candidate was asked to build.
 
-Include:
-- Complete implementations of all TODO sections
-- Working Model parsing
-- Working Service with API calls
-- Working ViewModel with state management
-- Working View (if UI needs completion)
-- Code should be production-quality
-- Include comments explaining key decisions
+## Your Job
+1. **Review the code** - Check if requirements were met
+2. **Evaluate quality** - Assess code organization, architecture, best practices
+3. **Act as interviewer** - Would you move this candidate to the next round?
+4. **Act as coach** - Provide constructive feedback on what could be improved
 
-**Purpose:** Another Claude agent can read SOLUTION.md to generate a complete working example.
+## Evaluation Criteria
 
-## What Code to Write vs. Leave as TODO
+### Must-Have (Pass/Fail)
+- [ ] App builds and runs without errors
+- [ ] Core functionality works as specified
+- [ ] Handles loading states
+- [ ] Handles error states
+- [ ] Uses SwiftUI and MVVM architecture
 
-**Study the weather app reference to understand the balance.** Here's the guideline:
+### Code Quality (Scoring 1-5)
+- **Architecture** - Proper separation of concerns (Model, View, ViewModel, Service)
+- **Swift Best Practices** - Modern syntax (async/await, Codable, @Published/@Observable)
+- **Error Handling** - Proper use of try/catch, user-friendly error messages
+- **Code Clarity** - Readable, well-structured, appropriate naming
+- **UI/UX** - Clean interface, handles edge cases (empty states, loading indicators)
 
-### ✅ Fully Implement (Engineer can run immediately)
-- **[AppName]App.swift** - SwiftUI entry point, working
-- **Views/** - Functional UI layout (TextField, Button, List, NavigationStack)
-- **ViewModels/** - `@Published` properties, state variables, method signatures
-- **Info.plist** - Basic configuration
-- **Assets.xcassets/** - Empty asset catalog
-- **MockData.swift** - Sample JSON data for testing
+### Bonus Points
+- Went beyond requirements
+- Added tests
+- Exceptional code quality or creative solutions
 
-### ⚠️ Provide Structure + TODO Comments (Engineer implements)
-- **Models/** - Struct definitions with property names, add TODO for custom initializers or computed properties
-- **Services/** - Method signatures with parameters and return types, add TODO in body
-- **ViewModel logic** - Add TODO comments in methods where engineer implements API calls, state updates, error handling
+## Feedback Format
 
-### Example (from WeatherService.swift):
+Provide feedback in this structure:
+
+### 1. Interview Decision
+**Decision:** [PASS / WEAK PASS / FAIL]
+**Reasoning:** [1-2 sentences]
+
+### 2. What Went Well
+- [Highlight 2-3 strong points]
+
+### 3. Areas for Improvement
+- [Point out 2-3 specific issues or missed opportunities]
+
+### 4. Code Review Comments
+[Provide specific file/line feedback on key issues]
+
+Example:
+- `MovieService.swift:25` - Missing error handling for network failures
+- `MovieListViewModel.swift:40` - Should use @MainActor for UI updates
+
+### 5. Overall Assessment
+[2-3 paragraphs with holistic view, interview performance, next steps]
+
+### 6. Coaching Advice
+[If this were a learning exercise, what should they study or practice?]
+
+## Tone
+- Be constructive and encouraging
+- Point out both strengths and weaknesses
+- Be specific (cite files/lines when possible)
+- Balance interviewer objectivity with coach supportiveness
+```
+
+---
+
+## Step 6: Create Xcode Project with Boilerplate Code
+
+### Use `01_weather_app_attempt1/` as reference
+
+**Copy and adapt:**
+1. `.xcodeproj/project.pbxproj` (update UUIDs, bundle IDs, names)
+2. App structure (Models, Services, ViewModels, Views, Helpers)
+3. SwiftUI entry point (`[AppName]App.swift`)
+4. Basic UI layout
+
+### What to include in code:
+
+**✅ Fully working:**
+- SwiftUI entry point
+- Basic UI layout (TextField, Button, List, etc.)
+- Info.plist, Assets.xcassets
+- Mock data (sample JSON as Data)
+
+**⚠️ Incomplete (user implements):**
+- Model properties and Codable conformance
+- Service method bodies (networking logic)
+- ViewModel methods (state management, API calls)
+- Error handling
+
+**Example - Service layer:**
 ```swift
-class WeatherService {
-    static let shared = WeatherService()
-    private let baseURL = "https://api.openweathermap.org/data/2.5/weather"
+class MovieService {
+    static let shared = MovieService()
 
-    // TODO: Implement method to fetch weather for a city
-    // Steps:
-    // 1. Construct URL with query parameters
-    // 2. Create URLRequest
-    // 3. Use URLSession to make network call
-    // 4. Parse JSON response
-    // 5. Handle errors
-    func fetchWeather(for city: String) async throws -> WeatherResponse {
-        // Your implementation here
+    private let baseURL = "https://api.themoviedb.org/3"
+
+    func fetchPopularMovies() async throws -> MoviesResponse {
+        // Implement networking here
+        // 1. Construct URL
+        // 2. Create URLRequest
+        // 3. Use URLSession.shared.data(for:)
+        // 4. Decode JSON response
+        fatalError("Not implemented")
     }
 }
 ```
 
+**Do NOT write explicit TODO comments like "// TODO: implement this"**
+- Just leave method bodies incomplete
+- Use `fatalError("Not implemented")` or empty return
+- Let the user figure out what needs to be done based on INSTRUCTIONS.md
+
+---
+
+## Step 7: Search Internet for API Info
+
+**Before creating project:**
+1. Search for "[FEATURE] free API" (e.g., "movie database free API")
+2. Find real endpoint URLs
+3. Get sample JSON responses
+4. Check if auth is required (prefer free-tier or no-auth APIs)
+5. Include this info in INSTRUCTIONS.md
+
+**Example APIs:**
+- TMDB (movies) - Requires free API key
+- Unsplash (photos) - Requires free API key
+- JSONPlaceholder (mock data) - No auth required
+- TheMealDB (recipes) - Free, no auth
+- CoinGecko (crypto) - Free, no auth
+
+---
+
+## Step 8: Verify Before Submitting
+
+**Checklist:**
+- [ ] Created folder `[NN]_[feature]_app_attempt1/`
+- [ ] `INSTRUCTIONS.md` exists and mimics real interview prompt
+- [ ] `CLAUDE.md` exists with reviewer instructions
+- [ ] `.xcodeproj` opens in Xcode without errors
+- [ ] App builds and runs (⌘+R)
+- [ ] UI displays correctly
+- [ ] Mock data is provided
+- [ ] Code is incomplete (user must implement core logic)
+- [ ] No explicit "TODO" comments (just incomplete code)
+
+---
+
+## Example Workflow
+
+**User:** "Create me an iOS interview project"
+
+**Agent:**
+1. **Ask:** "Are you looking for a **45-minute interview** or a **take-home project**?"
+2. **User responds:** "45-minute interview"
+3. **Agent:**
+   - Searches internet for simple API (e.g., "free movies API")
+   - Finds TMDB API with sample JSON
+   - Creates `04_movie_browser_app_attempt1/`
+   - Writes `INSTRUCTIONS.md` (interview prompt for movie list app)
+   - Writes `CLAUDE.md` (reviewer instructions)
+   - Creates working Xcode project with boilerplate UI
+   - Leaves Service and ViewModel incomplete
+   - Includes mock JSON data
+4. **Agent tells user:** "Done! Open `04_movie_browser_app_attempt1/MovieBrowserApp.xcodeproj` and read `INSTRUCTIONS.md` to start."
+
+---
+
 ## Important Principles
 
-**Keep it realistic:**
-- Use actual public APIs (provide sample JSON if API requires auth)
-- Focus on iOS fundamentals (networking, UI, state management)
-- Mirror real interview time constraints
+1. **Always ask 45-min vs take-home first**
+2. **Search internet for real APIs and mock data**
+3. **INSTRUCTIONS.md mimics real interview prompts**
+4. **CLAUDE.md guides AI reviewer to act as interviewer + coach**
+5. **Include incomplete code, not explicit TODO comments**
+6. **Zero setup - project runs immediately**
+7. **SwiftUI only, modern Swift patterns**
+8. **User compresses project when done → AI reviews it**
 
-**Make it educational:**
-- Add helpful TODO comments with hints
-- Include example API responses in README
-- Provide MockData for offline testing
+---
 
-**SwiftUI Only:**
-- All projects use SwiftUI exclusively
-- Use modern Swift (async/await, @Published, Codable)
-- Follow MVVM architecture pattern
+## Summary
 
-**Zero setup time:**
-- Engineer opens .xcodeproj and immediately starts coding
-- No "create a project first" or setup scripts
-- Project builds and runs out of the box
-
-## Free APIs for Interviews
-
-- **Weather**: OpenWeatherMap, WeatherAPI
-- **Photos**: Unsplash, Pexels, Pixabay
-- **News**: NewsAPI, Guardian API
-- **Movies**: TMDB, OMDB
-- **Books**: Google Books, Open Library
-- **GitHub**: GitHub REST API
-- **Food**: TheMealDB, Spoonacular
-- **Random**: Random User Generator, JSONPlaceholder
-
-## Agent Workflow: How to Create a New Project
-
-When the user requests a new interview project, follow these steps:
-
-### 1. Determine Project Details
-- Feature name (e.g., "Recipe Finder", "Photo Gallery")
-- API to use (or suggest one from the list above)
-- Project number (check existing projects, increment by 1)
-- Folder name: `[NN]_[feature]_app_attempt1/`
-
-### 2. Use the Weather App as Template
-- **Read** `01_weather_app_attempt1/` files to understand structure
-- **Copy** the Xcode project structure (update names/UUIDs as needed)
-- **Mirror** the markdown file style and content
-- **Adapt** all content to the new feature
-
-### 3. Create All Required Files
-✅ Create these files in order:
-
-1. **Markdown files:**
-   - `README.md` - Based on weather app README
-   - `INTERVIEW_GUIDE.md` - Copy structure from reference
-   - `SOLUTION_CHECKLIST.md` - Copy structure from reference
-   - `PROJECT_STRUCTURE.md` - Update folder tree for new feature
-   - `SOLUTION.md` - Complete working implementation
-
-2. **Xcode project files:**
-   - `[AppName].xcodeproj/project.pbxproj` - Copy from weather app, update references
-   - `[AppName]/[AppName]App.swift` - SwiftUI entry point
-   - `[AppName]/Info.plist` - Basic config
-   - `[AppName]/Assets.xcassets/Contents.json` - Asset catalog
-
-3. **Swift source files:**
-   - `Models/[Feature]Model.swift` - Structs with TODO comments
-   - `Services/[Feature]Service.swift` - Method signatures with TODO
-   - `ViewModels/[Feature]ViewModel.swift` - `@Published` vars + TODO methods
-   - `Views/[Feature]View.swift` - Functional UI layout
-   - `Helpers/MockData.swift` - Sample JSON data (optional)
-
-### 4. Verify the Project
-Before finishing, ensure:
-- ✅ `.xcodeproj` file can be opened in Xcode
-- ✅ Project builds without errors (⌘+B)
-- ✅ App runs on simulator (⌘+R)
-- ✅ UI displays correctly (even with empty state)
-- ✅ TODO comments are clear and helpful
-- ✅ All markdown files are complete
-
-## Code Templates Reference
-
-**DO NOT copy these templates verbatim.** Instead:
-1. **Read the actual files** from `01_weather_app_attempt1/WeaherApp/WeaherApp/`
-2. **Adapt the patterns** to your new feature
-3. **Maintain the same style** of TODO comments and code structure
-
-Key files to reference:
-- `WeaherAppApp.swift` - SwiftUI entry point pattern
-- `Models/WeatherModel.swift` - How to structure models with TODOs
-- `Services/WeatherService.swift` - Service layer with method signatures + TODOs
-- `ViewModels/WeatherViewModel.swift` - ViewModel pattern with `@Published` properties
-- `Views/WeatherView.swift` - Functional UI with state management
-- `Helpers/MockData.swift` - How to provide sample data
-
-## Final Checklist Before Submitting to User
-
-Before you tell the user "Done!", verify:
-
-- [ ] Created folder `[NN]_[feature]_app_attempt1/`
-- [ ] All markdown files exist (README, INTERVIEW_GUIDE, SOLUTION_CHECKLIST, PROJECT_STRUCTURE, SOLUTION)
-- [ ] `.xcodeproj` file is valid and can be opened
-- [ ] All Swift files compile without errors
-- [ ] App launches on simulator showing basic UI
-- [ ] TODO comments are clear and helpful
-- [ ] Mock data is provided (if using API)
-- [ ] SOLUTION.md contains complete working implementation
-- [ ] All file paths match the structure template
-- [ ] Followed the weather app reference style
-
-## Example User Prompts and Responses
-
-**User:** "Create me a sample project for a recipe finder that can be built in 45 mins"
-
-**Agent Response:**
-1. Read `01_weather_app_attempt1/` to understand structure
-2. Determine: Recipe finder, use TheMealDB API, folder: `03_recipe_finder_app_attempt1/`
-3. Create all markdown files (README with recipe-specific requirements, etc.)
-4. Copy `.xcodeproj` from weather app, update all references to "RecipeApp"
-5. Create Swift files adapted from weather app patterns:
-   - `RecipeModel.swift` (with Recipe, RecipeResponse structs)
-   - `RecipeService.swift` (with fetchRecipes method signature + TODO)
-   - `RecipeViewModel.swift` (@Published recipes, isLoading, etc.)
-   - `RecipeView.swift` (functional search UI)
-   - `MockData.swift` (sample recipe JSON)
-6. Write `SOLUTION.md` with complete working code
-7. Build and run to verify
-8. Tell user: "Created 03_recipe_finder_app_attempt1/ - open RecipeApp.xcodeproj to start!"
-
-## Summary: Key Success Criteria
-
-✅ **User opens .xcodeproj** → Project opens in Xcode without errors
-✅ **User presses ⌘+R** → App builds and launches on simulator
-✅ **User sees UI** → Search field, button, basic layout visible
-✅ **User reads README** → Understands requirements and API details
-✅ **User sees TODOs** → Knows exactly what to implement
-✅ **User fills TODOs** → Can complete challenge in 45-60 minutes
-✅ **Another agent reads SOLUTION.md** → Can generate working example
+**Goal:** Create realistic iOS interview practice where:
+- User gets authentic interview experience
+- AI reviewer provides professional feedback
+- Everything is self-contained and ready to run
+- Mirrors real-world interview process
