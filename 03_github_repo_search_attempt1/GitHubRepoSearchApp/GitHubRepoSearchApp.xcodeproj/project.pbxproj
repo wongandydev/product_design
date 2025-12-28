@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		MB9A12B43F2A374100C1D928 /* MovieBrowserApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieBrowserApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D4E5F6789012345678 /* GitHubRepoSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRepoSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		MB9A12B63F2A374100C1D928 /* MovieBrowserApp */ = {
+		A1B2C3D4E5F6789012345679 /* GitHubRepoSearchApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MovieBrowserApp;
+			path = GitHubRepoSearchApp;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		MB9A12B13F2A374100C1D928 /* Frameworks */ = {
+		A1B2C3D4E5F678901234567A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		MB9A12AB3F2A374100C1D928 = {
+		A1B2C3D4E5F678901234567B = {
 			isa = PBXGroup;
 			children = (
-				MB9A12B63F2A374100C1D928 /* MovieBrowserApp */,
-				MB9A12B53F2A374100C1D928 /* Products */,
+				A1B2C3D4E5F6789012345679 /* GitHubRepoSearchApp */,
+				A1B2C3D4E5F678901234567C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		MB9A12B53F2A374100C1D928 /* Products */ = {
+		A1B2C3D4E5F678901234567C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				MB9A12B43F2A374100C1D928 /* MovieBrowserApp.app */,
+				A1B2C3D4E5F6789012345678 /* GitHubRepoSearchApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		MB9A12B33F2A374100C1D928 /* MovieBrowserApp */ = {
+		A1B2C3D4E5F678901234567D /* GitHubRepoSearchApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = MB9A12BF3F2A374200C1D928 /* Build configuration list for PBXNativeTarget "MovieBrowserApp" */;
+			buildConfigurationList = A1B2C3D4E5F678901234567E /* Build configuration list for PBXNativeTarget "GitHubRepoSearchApp" */;
 			buildPhases = (
-				MB9A12B03F2A374100C1D928 /* Sources */,
-				MB9A12B13F2A374100C1D928 /* Frameworks */,
-				MB9A12B23F2A374100C1D928 /* Resources */,
+				A1B2C3D4E5F678901234567F /* Sources */,
+				A1B2C3D4E5F678901234567A /* Frameworks */,
+				A1B2C3D4E5F6789012345680 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				MB9A12B63F2A374100C1D928 /* MovieBrowserApp */,
+				A1B2C3D4E5F6789012345679 /* GitHubRepoSearchApp */,
 			);
-			name = MovieBrowserApp;
+			name = GitHubRepoSearchApp;
 			packageProductDependencies = (
 			);
-			productName = MovieBrowserApp;
-			productReference = MB9A12B43F2A374100C1D928 /* MovieBrowserApp.app */;
+			productName = GitHubRepoSearchApp;
+			productReference = A1B2C3D4E5F6789012345678 /* GitHubRepoSearchApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		MB9A12AC3F2A374100C1D928 /* Project object */ = {
+		A1B2C3D4E5F6789012345681 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2620;
-				LastUpgradeCheck = 2620;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					MB9A12B33F2A374100C1D928 = {
-						CreatedOnToolsVersion = 26.2;
+					A1B2C3D4E5F678901234567D = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = MB9A12AF3F2A374100C1D928 /* Build configuration list for PBXProject "MovieBrowserApp" */;
+			buildConfigurationList = A1B2C3D4E5F6789012345682 /* Build configuration list for PBXProject "GitHubRepoSearchApp" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = MB9A12AB3F2A374100C1D928;
+			mainGroup = A1B2C3D4E5F678901234567B;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = MB9A12B53F2A374100C1D928 /* Products */;
+			productRefGroup = A1B2C3D4E5F678901234567C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				MB9A12B33F2A374100C1D928 /* MovieBrowserApp */,
+				A1B2C3D4E5F678901234567D /* GitHubRepoSearchApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		MB9A12B23F2A374100C1D928 /* Resources */ = {
+		A1B2C3D4E5F6789012345680 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		MB9A12B03F2A374100C1D928 /* Sources */ = {
+		A1B2C3D4E5F678901234567F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		MB9A12BD3F2A374200C1D928 /* Debug */ = {
+		A1B2C3D4E5F6789012345683 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -177,7 +177,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -188,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		MB9A12BE3F2A374200C1D928 /* Release */ = {
+		A1B2C3D4E5F6789012345684 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -234,7 +234,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -244,63 +244,57 @@
 			};
 			name = Release;
 		};
-		MB9A12C03F2A374200C1D928 /* Debug */ = {
+		A1B2C3D4E5F6789012345685 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.interview.MovieBrowserApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.interview.GitHubRepoSearchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		MB9A12C13F2A374200C1D928 /* Release */ = {
+		A1B2C3D4E5F6789012345686 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.interview.MovieBrowserApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.interview.GitHubRepoSearchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -309,25 +303,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		MB9A12AF3F2A374100C1D928 /* Build configuration list for PBXProject "MovieBrowserApp" */ = {
+		A1B2C3D4E5F6789012345682 /* Build configuration list for PBXProject "GitHubRepoSearchApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				MB9A12BD3F2A374200C1D928 /* Debug */,
-				MB9A12BE3F2A374200C1D928 /* Release */,
+				A1B2C3D4E5F6789012345683 /* Debug */,
+				A1B2C3D4E5F6789012345684 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		MB9A12BF3F2A374200C1D928 /* Build configuration list for PBXNativeTarget "MovieBrowserApp" */ = {
+		A1B2C3D4E5F678901234567E /* Build configuration list for PBXNativeTarget "GitHubRepoSearchApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				MB9A12C03F2A374200C1D928 /* Debug */,
-				MB9A12C13F2A374200C1D928 /* Release */,
+				A1B2C3D4E5F6789012345685 /* Debug */,
+				A1B2C3D4E5F6789012345686 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = MB9A12AC3F2A374100C1D928 /* Project object */;
+	rootObject = A1B2C3D4E5F6789012345681 /* Project object */;
 }
