@@ -11,12 +11,34 @@ class RepositorySearchViewModel: ObservableObject {
 
     func search() async {
         // TODO: Implement this method
-        // 1. Validate searchText is not empty
-        // 2. Set isLoading = true
-        // 3. Clear previous errorMessage
-        // 4. Call service.searchRepositories(query: searchText)
-        // 5. Handle success: update repositories
-        // 6. Handle error: update errorMessage
-        // 7. Set isLoading = false
+        if searchText.isEmpty {
+            return 
+        }
+        
+        isLoading = true
+        errorMessage = nil
+        
+        defer { isLoading = false }
+
+        do {
+            let response = try await service.searchRepositories(query: searchText)
+            repositories = response.items
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+        
     }
 }
+
+
+
+
+
+
+// 1. Validate searchText is not empty
+// 2. Set isLoading = true
+// 3. Clear previous errorMessage
+// 4. Call service.searchRepositories(query: searchText)
+// 5. Handle success: update repositories
+// 6. Handle error: update errorMessage
+// 7. Set isLoading = false

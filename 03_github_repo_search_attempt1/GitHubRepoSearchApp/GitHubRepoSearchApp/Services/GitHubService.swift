@@ -12,15 +12,31 @@ class GitHubService {
         case decodingError(Error)
     }
 
-    func searchRepositories(query: String) async throws -> SearchResponse {
+    // Idellly I would pass in the URLSession as as dependency for testability reasons.
+    func searchRepositories(query: String) async throws(ServiceError) -> SearchResponse {
         // TODO: Implement this method
-        // 1. Construct URL with query parameter
-        // 2. Create URLRequest
-        // 3. Use URLSession.shared.data(for:) with async/await
-        // 4. Validate response status code (200-299)
-        // 5. Decode JSON to SearchResponse
-        // 6. Return result or throw error
-
-        fatalError("Not implemented")
+        
+        let urlString = baseURL + "/" + query
+        guard let queryUrl = URL(string: urlString) else {
+            throw .invalidURL
+        }
+        
+        // Option we can use URL request if we need network level caching.
+        do {
+//            let (data, response) = try await URLSession.shared.data(from: queryUrl)
+            // when would we throw invalid response?
+            
+            let data = MockData.searchResponseJSON
+            let decoder = JSONDecoder()
+            do {
+                return try decoder.decode(SearchResponse.self, from: data)
+            } catch {
+                // CLAUDE: Why does this require me to be explicit with what I am throwing? the compliler was having problems finding this typed error.
+                print("ERROR \(error)")
+                throw ServiceError.decodingError(error)
+            }
+        } catch {
+            throw .networkError(error)
+        }
     }
 }
