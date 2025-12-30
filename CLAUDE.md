@@ -21,13 +21,10 @@ When user says: **"Create me an iOS interview project"**
 
 Then you create:
 1. **Working Xcode project** with boilerplate code and mock data
-2. **README.md** - Main requirements and API documentation
-3. **INTERVIEW_GUIDE.md** - Interview approach guide
-4. **PROJECT_STRUCTURE.md** - Detailed file descriptions
-5. **SETUP.md** - Setup and running instructions
-6. **SOLUTION_CHECKLIST.md** - Pre-submission verification
+2. **INSTRUCTIONS.md** - Main requirements, API documentation, and what to implement
+3. **SOLUTION_CHECKLIST.md** - Pre-submission verification checklist
 
-**Reference:** Use `01_weather_app_attempt1/` and `02_recipe_finder_app_attempt1/` for structure patterns
+**Reference:** Use `03_github_repo_search_attempt1/` for structure patterns
 
 ---
 
@@ -105,11 +102,8 @@ This mimics a real interview experience with AI-powered feedback.
 ### Folder Structure:
 ```
 [NN]_[feature]_app_attempt1/
-├── README.md                     # Main requirements and API documentation
-├── INTERVIEW_GUIDE.md            # Interview approach guide
-├── PROJECT_STRUCTURE.md          # Detailed file descriptions
-├── SETUP.md                      # Setup and running instructions
-├── SOLUTION_CHECKLIST.md         # Pre-submission verification
+├── INSTRUCTIONS.md               # Main requirements and API documentation
+├── SOLUTION_CHECKLIST.md         # Pre-submission verification checklist
 │
 └── [AppName]/                    # Working Xcode project
     ├── [AppName].xcodeproj/
@@ -131,7 +125,6 @@ This mimics a real interview experience with AI-powered feedback.
         ├── ViewModels/
         │   └── [Feature]ViewModel.swift
         ├── Views/
-        │   ├── SearchView.swift (or main view)
         │   ├── [Feature]ListView.swift
         │   └── [Feature]RowView.swift
         └── Helpers/
@@ -140,102 +133,156 @@ This mimics a real interview experience with AI-powered feedback.
 
 ### What to include:
 - ✅ Working Xcode project (opens and runs immediately)
-- ✅ Boilerplate UI code (TextField, Button, List, NavigationStack)
 - ✅ Mock data for testing
-- ✅ Method signatures and property declarations
-- ⚠️ Incomplete implementation (user fills in logic)
+- ✅ Complete Models with Codable conformance
+- ⚠️ INCOMPLETE Views (user writes SwiftUI code)
+- ⚠️ INCOMPLETE Service (user implements networking)
+- ⚠️ INCOMPLETE ViewModel (user implements state management)
 
 ---
 
 ## Step 4: Write Documentation Files
 
-**Create 5 markdown files in the project root:**
+**Create 2 markdown files in the project root:**
 
-### README.md
-**Purpose:** Main requirements and API documentation
-**Style:** Technical specification with clear requirements
+### INSTRUCTIONS.md
+**Purpose:** Main requirements, API documentation, and implementation guide
+**Style:** Technical specification with clear requirements and implementation hints
 
 **Include:**
-1. **Context** - Brief intro (company name optional, or use "Company XYZ")
+1. **Overview** - Brief intro to the challenge
 2. **Task** - What feature to build
-3. **Requirements** - Must-have features (3-5 bullet points)
-4. **Technical constraints** - SwiftUI, MVVM, async/await, etc.
-5. **Time limit** - 45 minutes or "take-home, submit within 48 hours"
-6. **API information** - Endpoint, sample JSON, how to use mock data
-7. **Evaluation criteria** - What they're looking for
-8. **Submission** - "Zip the project when done"
+3. **Time Limit** - 45 minutes or take-home
+4. **Requirements** - Must-have features (3-5 bullet points with checkboxes)
+5. **Technical Constraints** - SwiftUI, MVVM, async/await, no third-party libraries
+6. **API Information** - Endpoint, sample JSON, response fields explanation
+7. **Project Structure** - What files exist and which ones to implement
+8. **What You Need to Implement** - Specific guidance on Service and ViewModel
+9. **Implementation Tips** - Code patterns and suggested approach
+10. **What We're Looking For** - Evaluation criteria
+11. **Getting Started** - How to open and run the project
+12. **Submission** - How to submit when done
 
 **Example structure:**
 ```markdown
-# iOS Engineer Interview Challenge
+# iOS Engineer Interview Challenge - [Feature Name]
 
 ## Overview
-Welcome! We'd like you to build a simple [FEATURE] app to demonstrate your iOS development skills.
+Welcome! Build a simple [FEATURE] app to demonstrate your iOS development skills.
 
 ## Task
-Build a SwiftUI app that allows users to [CORE FUNCTIONALITY].
+Build a SwiftUI app that [CORE FUNCTIONALITY].
+
+## Time Limit
+**45 minutes**
 
 ## Requirements
 - [ ] Fetch data from the provided API endpoint
 - [ ] Display results in a scrollable list
 - [ ] Handle loading and error states
 - [ ] Use MVVM architecture pattern
-- [ ] Use modern Swift (async/await, Codable)
 
-## Time Limit
-You have **45 minutes** to complete this challenge.
+## Technical Constraints
+- Use SwiftUI for the UI
+- Use MVVM architecture
+- Use modern Swift features (async/await, Codable)
+- No third-party libraries
 
 ## API Information
-**Endpoint:** `https://api.example.com/movies`
+[Include endpoint, sample JSON, field descriptions]
 
-**Sample Response:**
-```json
-{
-  "results": [
-    {"id": 1, "title": "Example Movie", ...}
-  ]
-}
-```
+## Project Structure
+[Show folder structure with indicators of what's complete vs incomplete]
 
-**Mock Data:** We've included `MockData.swift` for offline testing.
+## What You Need to Implement
+### 1. MovieService.swift
+- Implement fetchMovies() method
+- Use async/await with URLSession
+- Decode JSON response
+
+### 2. MovieListViewModel.swift
+- Implement loadMovies() method
+- Update @Published properties
+- Handle loading and error states
+
+## Implementation Tips
+[Include code snippets for common patterns]
 
 ## What We're Looking For
 - Clean, readable code
-- Proper error handling
-- SwiftUI best practices
-- Appropriate architecture
-
-## Submission
-When finished, compress the entire project folder and submit.
+- Proper MVVM implementation
+- Error handling
+- Modern Swift patterns
 
 ## Getting Started
-1. Open `[AppName].xcodeproj` in Xcode
-2. Run the app (⌘+R) to see the boilerplate UI
+1. Open [AppName].xcodeproj in Xcode
+2. Run the app (⌘+R)
 3. Implement the required functionality
-4. Test with mock data first, then try the real API
+4. Test your implementation
+
+## Submission
+When finished, compress the entire project folder.
 
 Good luck!
 ```
 
-### INTERVIEW_GUIDE.md
-**Purpose:** Interview approach guide - how to tackle the problem
-**Reference:** See `03_github_repo_search_attempt1/INTERVIEW_GUIDE.md` for full example
-**Key sections:** Overview, time allocation, requirements, technical requirements, what we're evaluating, API information, suggested implementation order, interview tips
-
-### PROJECT_STRUCTURE.md
-**Purpose:** Detailed file-by-file descriptions of what goes where
-**Reference:** See `03_github_repo_search_attempt1/PROJECT_STRUCTURE.md` for full example
-**Key sections:** File descriptions for Models, Services, ViewModels, Views, Helpers, implementation order, data flow, error handling strategy
-
-### SETUP.md
-**Purpose:** Setup and running instructions
-**Reference:** See `03_github_repo_search_attempt1/SETUP.md` for full example
-**Key sections:** Prerequisites, opening the project, running the app, troubleshooting, development workflow, keyboard shortcuts
-
 ### SOLUTION_CHECKLIST.md
-**Purpose:** Pre-submission verification checklist
-**Reference:** See `03_github_repo_search_attempt1/SOLUTION_CHECKLIST.md` for full example
-**Key sections:** Core functionality checklist, state management checklist, architecture checklist, Swift best practices checklist, edge cases, UI/UX, testing, build & run, interview readiness questions
+**Purpose:** Pre-submission verification checklist for both user and AI reviewer
+**Style:** Comprehensive checklist format
+
+**Include:**
+1. **Core Functionality** - Feature requirements checklist
+2. **State Management** - Loading, error, empty states
+3. **Architecture** - MVVM implementation checklist
+4. **Swift Best Practices** - Modern patterns, optionals handling
+5. **Edge Cases** - Error handling, network failures
+6. **UI/UX** - User experience considerations
+7. **Build & Run** - Project compiles and runs
+8. **Interview Readiness** - Questions to verify understanding
+
+**Example:**
+```markdown
+# Solution Checklist
+
+## Core Functionality
+- [ ] App fetches data from API/mock data
+- [ ] Results display in scrollable list
+- [ ] Each item shows required information
+- [ ] App builds and runs without errors
+
+## State Management
+- [ ] Loading state displays while fetching
+- [ ] Error state shows when request fails
+- [ ] Empty state handles no results
+
+## Architecture
+- [ ] MVVM pattern implemented correctly
+- [ ] Service layer handles networking
+- [ ] ViewModel manages state
+- [ ] Views observe ViewModel changes
+
+## Swift Best Practices
+- [ ] Uses async/await for networking
+- [ ] Proper Codable implementation
+- [ ] @Published properties for state
+- [ ] @MainActor for UI updates
+- [ ] No force unwrapping
+
+## Edge Cases
+- [ ] Network error handling
+- [ ] Invalid data handling
+- [ ] User feedback for errors
+
+## Build & Run
+- [ ] Project builds without errors
+- [ ] App runs on simulator
+- [ ] No crashes during basic usage
+
+## Interview Readiness Questions
+- Can you explain your architecture decisions?
+- How did you handle error states?
+- What would you improve with more time?
+```
 
 ---
 
@@ -264,20 +311,20 @@ Good luck!
 - Leave method bodies incomplete with comments
 - See `03_github_repo_search_attempt1/GitHubRepoSearchApp/GitHubRepoSearchApp/ViewModels/RepositorySearchViewModel.swift` for example
 
-### Views (COMPLETE - User doesn't implement)
-- Create fully working SwiftUI views
-- Main view with search UI and state handling
-- List view for displaying results
-- Row view for individual items
-- Include loading states, error states, empty states
-- Use proper SwiftUI patterns (@StateObject, NavigationStack, etc.)
-- See `03_github_repo_search_attempt1/GitHubRepoSearchApp/GitHubRepoSearchApp/Views/` for examples
+### Views (INCOMPLETE - User implements)
+- Create View files with minimal structure
+- Include import SwiftUI and basic struct declarations
+- Leave view bodies mostly empty or with simple placeholder
+- User will implement the full SwiftUI layout
+- DO NOT create complete UI - user should build this themselves
 
 ### Helpers (COMPLETE - User doesn't implement)
 - Create MockData.swift with realistic JSON data
 - Format as `Data` using `.data(using: .utf8)!`
-- Include 3-5 sample items
+- Include **10-15 sample items with variety** to make filtering/searching realistic
+- Include diverse data (different categories, ratings, dates, etc.) so user must implement real filtering logic
 - Match the structure defined in Models
+- **Important:** Mock data should be rich enough that filtering is required, not just returning static results
 - See `03_github_repo_search_attempt1/GitHubRepoSearchApp/GitHubRepoSearchApp/Helpers/MockData.swift` for example
 
 ---
@@ -302,9 +349,9 @@ Good luck!
 - Mock data (sample JSON as Data)
 
 **⚠️ Incomplete (user implements):**
-- Model properties and Codable conformance
 - Service method bodies (networking logic)
 - ViewModel methods (state management, API calls)
+- View bodies (SwiftUI layout and UI)
 - Error handling
 
 **Example - Service layer:**
@@ -316,19 +363,42 @@ class MovieService {
 
     func fetchPopularMovies() async throws -> MoviesResponse {
         // Implement networking here
-        // 1. Construct URL
-        // 2. Create URLRequest
-        // 3. Use URLSession.shared.data(for:)
-        // 4. Decode JSON response
         fatalError("Not implemented")
     }
 }
 ```
 
-**Do NOT write explicit TODO comments like "// TODO: implement this"**
-- Just leave method bodies incomplete
-- Use `fatalError("Not implemented")` or empty return
-- Let the user figure out what needs to be done based on INSTRUCTIONS.md
+**Example - ViewModel:**
+```swift
+@MainActor
+class MovieListViewModel: ObservableObject {
+    @Published var movies: [Movie] = []
+    @Published var isLoading = false
+    @Published var errorMessage: String?
+
+    func loadMovies() async {
+        // Implement movie loading logic here
+    }
+}
+```
+
+**Example - View:**
+```swift
+struct MovieListView: View {
+    @StateObject private var viewModel = MovieListViewModel()
+
+    var body: some View {
+        // Implement SwiftUI layout here
+        Text("Movie List View")
+    }
+}
+```
+
+**Comment style for incomplete code:**
+- Use simple, single-line comments: `// Implement networking here`
+- NO multi-step numbered lists in comments
+- NO explicit "TODO:" markers
+- Let the INSTRUCTIONS.md guide the user on what to implement
 
 ---
 
@@ -341,10 +411,11 @@ The projects should be **bare bones** - just enough to work, nothing extra.
 **What this means:**
 - Implement ONLY the core features listed in requirements
 - Models should be complete and working (with Codable)
-- Views should be complete and working (nice UI)
-- Service and ViewModel should be INCOMPLETE (user implements)
+- MockData should be complete with realistic JSON
+- Views, Service, and ViewModel should be INCOMPLETE (user implements)
 - NO extra features, NO fancy animations, NO over-engineering
-- NO explicit "TODO" comments (use `fatalError("Not implemented")` instead)
+- Use simple comments, NOT multi-step numbered lists
+- NO explicit "TODO:" markers
 
 **Industry Best Practices (from research):**
 - 90% of iOS interview projects test: API integration + JSON parsing + displaying data in a list
@@ -360,18 +431,17 @@ The projects should be **bare bones** - just enough to work, nothing extra.
 
 **Checklist:**
 - [ ] Created folder `[NN]_[feature]_app_attempt1/`
-- [ ] `README.md` exists with requirements and API docs
-- [ ] `INTERVIEW_GUIDE.md` exists with interview approach
-- [ ] `PROJECT_STRUCTURE.md` exists with detailed file descriptions
-- [ ] `SETUP.md` exists with setup instructions
+- [ ] `INSTRUCTIONS.md` exists with requirements, API docs, and implementation guidance
 - [ ] `SOLUTION_CHECKLIST.md` exists with verification checklist
 - [ ] `.xcodeproj` opens in Xcode without errors
 - [ ] App builds and runs (⌘+R)
-- [ ] UI displays correctly (Views are complete)
 - [ ] Models are complete with Codable conformance
 - [ ] Mock data is provided in `Helpers/MockData.swift`
-- [ ] Service and ViewModel are INCOMPLETE (user implements)
-- [ ] No explicit "TODO" comments (use `fatalError("Not implemented")`)
+- [ ] Views are INCOMPLETE with minimal structure (user implements)
+- [ ] Service is INCOMPLETE (user implements networking)
+- [ ] ViewModel is INCOMPLETE (user implements state management)
+- [ ] Use simple comments, NOT multi-step numbered lists
+- [ ] NO explicit "TODO:" markers
 
 ---
 
@@ -385,18 +455,16 @@ The projects should be **bare bones** - just enough to work, nothing extra.
 3. **Agent:**
    - Chooses simple topic: GitHub repository search
    - Creates `03_github_repo_search_attempt1/`
-   - Writes README.md (requirements and API documentation)
-   - Writes INTERVIEW_GUIDE.md (interview approach)
-   - Writes PROJECT_STRUCTURE.md (detailed file descriptions)
-   - Writes SETUP.md (setup and running instructions)
+   - Writes INSTRUCTIONS.md (requirements, API docs, implementation guidance)
    - Writes SOLUTION_CHECKLIST.md (verification checklist)
    - Creates brand new Xcode project from scratch (not copying)
-   - Creates complete Models with Codable
-   - Creates complete Views with working UI
+   - Creates complete Models with Codable conformance
+   - Creates complete MockData.swift with realistic JSON
+   - Creates incomplete Views with minimal structure
    - Creates incomplete Service (with `fatalError("Not implemented")`)
-   - Creates incomplete ViewModel (with TODO comments in method bodies)
-   - Includes mock JSON data in `Helpers/MockData.swift`
-4. **Agent tells user:** "Done! Open `03_github_repo_search_attempt1/GitHubRepoSearchApp.xcodeproj` in Xcode and read `README.md` to start."
+   - Creates incomplete ViewModel (with simple comments)
+   - All incomplete code uses simple comments, NO multi-step lists
+4. **Agent tells user:** "Done! Open `03_github_repo_search_attempt1/GitHubRepoSearchApp.xcodeproj` in Xcode and read `INSTRUCTIONS.md` to start."
 
 ---
 
@@ -406,13 +474,15 @@ The projects should be **bare bones** - just enough to work, nothing extra.
 2. **DO NOT search the internet** - Just create mock JSON data yourself
 3. **Create projects from scratch** - Do NOT copy existing .xcodeproj files
 4. **Keep it bare bones** - Minimal but functional, no over-engineering
-5. **Complete what's needed for UI** - Models and Views should work perfectly
-6. **Leave business logic incomplete** - Service and ViewModel for user to implement
-7. **Use `fatalError("Not implemented")`** - Instead of explicit TODO comments
-8. **Create 5 documentation files** - README, INTERVIEW_GUIDE, PROJECT_STRUCTURE, SETUP, SOLUTION_CHECKLIST
-9. **Zero setup - project runs immediately** - App should build and show UI out of the box
-10. **SwiftUI only, modern Swift patterns** - async/await, Codable, @Published, @MainActor
-11. **Production-ready code quality** - Not hackathon-level, clean and professional
+5. **Only 2 documentation files** - INSTRUCTIONS.md and SOLUTION_CHECKLIST.md
+6. **Complete only Models and MockData** - Everything else is for user to implement
+7. **Views are INCOMPLETE** - User writes the SwiftUI code themselves
+8. **Leave business logic incomplete** - Service and ViewModel for user to implement
+9. **Use simple comments** - NOT multi-step numbered lists, NO "TODO:" markers
+10. **Use `fatalError("Not implemented")`** - For incomplete method bodies
+11. **Zero setup - project builds immediately** - App should compile out of the box
+12. **SwiftUI only, modern Swift patterns** - async/await, Codable, @Published, @MainActor
+13. **Production-ready code quality** - Not hackathon-level, clean and professional
 
 ---
 
@@ -445,6 +515,63 @@ The projects should be **bare bones** - just enough to work, nothing extra.
 - Copying projects creates dependency on existing structure and can introduce inconsistencies
 - Creating from scratch ensures clean, minimal, purpose-built projects
 - Bare bones keeps the focus on core functionality that matters for interviews
+
+### Session 2025-12-29: Documentation and View Completeness Changes
+
+**What was corrected:**
+1. **Too many documentation files** - Agent was creating 5 markdown files (README, INTERVIEW_GUIDE, PROJECT_STRUCTURE, SETUP, SOLUTION_CHECKLIST)
+2. **Views were complete** - Agent was building complete SwiftUI views for the user
+3. **Multi-step TODO comments** - Agent was adding numbered step-by-step comments in incomplete code
+
+**Corrections made:**
+1. **Only 2 documentation files** - Create INSTRUCTIONS.md (requirements + API + implementation guidance) and SOLUTION_CHECKLIST.md only
+2. **Views are INCOMPLETE** - User should write the SwiftUI code themselves. Only provide minimal structure with placeholders
+3. **Simple comments only** - Use single-line comments like `// Implement networking here`, NOT multi-step numbered lists, NO "TODO:" markers
+
+**What's complete vs incomplete now:**
+- ✅ **COMPLETE:** Models (with Codable), MockData.swift (realistic JSON)
+- ⚠️ **INCOMPLETE:** Views (minimal structure), Service (method signatures), ViewModel (property declarations)
+
+**Why this matters:**
+- In real interviews, candidates write ALL the code including UI - having complete views defeats the purpose
+- Too many documentation files is overwhelming - consolidate into 2 essential files
+- Simple comments are cleaner and more realistic than step-by-step instructions
+- The interviewee should figure out implementation from INSTRUCTIONS.md, not from code comments
+
+### Session 2025-12-29: Mock Data vs Real APIs
+
+**What was corrected:**
+- User attempted to use real GitHub API in project 03 and got 404 errors
+- Real APIs require authentication, have rate limits, and add unnecessary complexity
+
+**Corrections made:**
+1. **ALWAYS use MockData for implementation** - Interview projects should use the mock JSON data provided, NOT real API calls
+2. **API endpoints are for reference only** - Include realistic endpoint URLs in INSTRUCTIONS.md for context, but implementation should use MockData.swift
+3. **Focus on skills, not API troubleshooting** - Interview projects test Swift/SwiftUI/MVVM skills, not API key management
+
+**Implementation approach:**
+- Service layer should decode from MockData.swift (e.g., `JSONDecoder().decode(Type.self, from: MockData.someJSON)`)
+- User can optionally add real API integration as a bonus if time permits
+- No API keys required, no network dependencies, faster testing
+
+**Mock data should be realistic and rich:**
+- **MUST include 12-15 items minimum** (not just 3-5)
+- **For search apps:** Include diverse keywords/names across multiple categories
+  - Example: GitHub repo search should have repos in Swift, JavaScript, Python, Go, Rust, Java, TypeScript, etc.
+  - Searching "swift" should only return Swift repos, "react" only React repos, etc.
+  - Forces implementation of real filtering logic (case-insensitive, match on name/description)
+- **For rating/scoring apps:** Include varied ratings/scores so sorting and filtering matters
+  - Example: Movies from 3.5 to 9.2 rating so filtering >7.0 is meaningful
+- **For date/time apps:** Include different dates/times to test date parsing and sorting
+- **For category apps:** Include multiple distinct categories to force real categorization logic
+- **Goal:** User CANNOT just return all mock data - they MUST implement filtering/searching/sorting logic
+
+**Why this matters:**
+- Eliminates setup friction (no API keys, no rate limiting)
+- Provides reliable, repeatable testing experience
+- Keeps focus on coding skills rather than API troubleshooting
+- Rich mock data tests filtering/searching skills, not just JSON decoding
+- Faster iteration and testing during the 45-minute time limit
 
 ---
 
