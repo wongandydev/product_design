@@ -22,9 +22,10 @@ When user says: **"Create me an iOS interview project"**
 Then you create:
 1. **Working Xcode project** with boilerplate code and mock data
 2. **INSTRUCTIONS.md** - Main requirements, API documentation, and what to implement
-3. **SOLUTION_CHECKLIST.md** - Pre-submission verification checklist
+3. **API_SETUP.md** - Instructions for getting API keys and setting up real API access
+4. **SOLUTION_CHECKLIST.md** - Pre-submission verification checklist
 
-**Reference:** Use `03_github_repo_search_attempt1/` for structure patterns
+**Reference:** Use `04_movie_browser_app_attempt1/` for structure patterns
 
 ---
 
@@ -143,7 +144,7 @@ This mimics a real interview experience with AI-powered feedback.
 
 ## Step 4: Write Documentation Files
 
-**Create 2 markdown files in the project root:**
+**Create 3 markdown files in the project root:**
 
 ### INSTRUCTIONS.md
 **Purpose:** Main requirements, API documentation, and implementation guide
@@ -224,6 +225,124 @@ Build a SwiftUI app that [CORE FUNCTIONALITY].
 When finished, compress the entire project folder.
 
 Good luck!
+```
+
+### API_SETUP.md
+**Purpose:** Instructions for obtaining API keys and setting up real API access
+**Style:** Step-by-step tutorial specific to the API chosen for this project
+
+**Include:**
+1. **Why Use Real APIs** - Benefits of real API integration vs mock data
+2. **Quick Start with Mock Data** - For users who want to skip API setup
+3. **API Provider Information** - Name, website, free tier details
+4. **Step-by-Step Setup** - Creating account, getting API key, finding documentation
+5. **API Key Security** - Never commit keys to git, use environment variables or config
+6. **Testing the API** - How to verify the API key works (curl example)
+7. **Integration Guide** - Where to add the API key in the code
+8. **Troubleshooting** - Common errors and solutions
+9. **Alternative: Mock Data** - Remind them mock data is available as fallback
+
+**Example template:**
+```markdown
+# API Setup Guide
+
+## Why Use Real APIs?
+Using a real API provides authentic networking experience and tests your URLSession implementation. However, mock data is available as a fallback if you prefer to skip this step.
+
+## Quick Start (Skip API Setup)
+If you want to start coding immediately, use the provided mock data in `MockData.swift`. You can implement your service layer with mock data and optionally upgrade to the real API later.
+
+## API Provider: [API Name]
+
+### Overview
+- **Website:** [API website URL]
+- **Free Tier:** [Request limits, e.g., "1000 requests/day"]
+- **Signup Required:** [Yes/No and if credit card needed]
+- **Documentation:** [Link to API docs]
+
+### Step 1: Create an Account
+1. Visit [signup URL]
+2. [Specific signup instructions]
+3. Verify your email if required
+
+### Step 2: Get Your API Key
+1. [Where to navigate after login]
+2. [Steps to generate/find API key]
+3. Copy your API key
+
+### Step 3: Test Your API Key
+Try this command in Terminal to verify it works:
+```bash
+curl "[example API endpoint with YOUR_API_KEY placeholder]"
+```
+
+You should see a JSON response with [expected data].
+
+### Step 4: Add API Key to Your Code
+In `[ServiceFileName].swift`, add your API key:
+
+```swift
+// Option 1: Simple approach (for practice projects only)
+let apiKey = "YOUR_API_KEY_HERE"
+
+// Option 2: Better approach (for real projects)
+// Add to a Config.swift file that's .gitignored
+```
+
+**⚠️ Security Warning:** Never commit API keys to version control. For this practice project it's okay to hardcode temporarily, but in production always use environment variables or secure configuration.
+
+### Step 5: Update Service Implementation
+Replace the mock data approach with real networking:
+
+```swift
+func fetch[Data]() async throws -> [ResponseType] {
+    let urlString = "\(baseURL)/[endpoint]?api_key=\(apiKey)"
+    guard let url = URL(string: urlString) else {
+        throw [ServiceError].invalidURL
+    }
+
+    let (data, _) = try await URLSession.shared.data(from: url)
+    let decoder = JSONDecoder()
+    decoder.keyDecodingStrategy = .convertFromSnakeCase
+    return try decoder.decode([ResponseType].self, from: data)
+}
+```
+
+## Troubleshooting
+
+### "Invalid API Key" Error
+- Double-check you copied the complete key
+- Verify there are no extra spaces
+- Some APIs have multiple key types - make sure you're using the right one
+
+### "Resource Not Found" (404) Error
+- Verify the endpoint URL is correct
+- Check the API documentation for the current endpoint format
+- Ensure required parameters are included
+
+### Rate Limit Exceeded
+- You've hit the free tier limit
+- Wait for the limit to reset or use mock data as fallback
+- Consider caching responses to reduce API calls
+
+### JSON Decoding Errors
+- Print the raw response: `print(String(data: data, encoding: .utf8))`
+- Compare with your model's CodingKeys
+- Verify snake_case to camelCase conversion is set
+
+## Fallback: Using Mock Data
+If API setup isn't working, you can still complete the challenge:
+
+```swift
+func fetch[Data]() async throws -> [ResponseType] {
+    // Use mock data instead
+    let decoder = JSONDecoder()
+    decoder.keyDecodingStrategy = .convertFromSnakeCase
+    return try decoder.decode([ResponseType].self, from: MockData.[dataName])
+}
+```
+
+This lets you focus on architecture and SwiftUI implementation without API complications.
 ```
 
 ### SOLUTION_CHECKLIST.md
@@ -474,7 +593,7 @@ The projects should be **bare bones** - just enough to work, nothing extra.
 2. **DO NOT search the internet** - Just create mock JSON data yourself
 3. **Create projects from scratch** - Do NOT copy existing .xcodeproj files
 4. **Keep it bare bones** - Minimal but functional, no over-engineering
-5. **Only 2 documentation files** - INSTRUCTIONS.md and SOLUTION_CHECKLIST.md
+5. **3 documentation files** - INSTRUCTIONS.md, API_SETUP.md, and SOLUTION_CHECKLIST.md
 6. **Complete only Models and MockData** - Everything else is for user to implement
 7. **Views are INCOMPLETE** - User writes the SwiftUI code themselves
 8. **Leave business logic incomplete** - Service and ViewModel for user to implement
@@ -516,17 +635,19 @@ The projects should be **bare bones** - just enough to work, nothing extra.
 - Creating from scratch ensures clean, minimal, purpose-built projects
 - Bare bones keeps the focus on core functionality that matters for interviews
 
-### Session 2025-12-29: Documentation and View Completeness Changes
+### Session 2025-12-29: Documentation and View Completeness Changes (UPDATED)
 
 **What was corrected:**
 1. **Too many documentation files** - Agent was creating 5 markdown files (README, INTERVIEW_GUIDE, PROJECT_STRUCTURE, SETUP, SOLUTION_CHECKLIST)
 2. **Views were complete** - Agent was building complete SwiftUI views for the user
 3. **Multi-step TODO comments** - Agent was adding numbered step-by-step comments in incomplete code
+4. **Later update:** User requested API_SETUP.md be added as a third file for API key instructions
 
 **Corrections made:**
-1. **Only 2 documentation files** - Create INSTRUCTIONS.md (requirements + API + implementation guidance) and SOLUTION_CHECKLIST.md only
+1. **3 documentation files** - Create INSTRUCTIONS.md (requirements + implementation guidance), API_SETUP.md (API key setup instructions), and SOLUTION_CHECKLIST.md
 2. **Views are INCOMPLETE** - User should write the SwiftUI code themselves. Only provide minimal structure with placeholders
 3. **Simple comments only** - Use single-line comments like `// Implement networking here`, NOT multi-step numbered lists, NO "TODO:" markers
+4. **File naming** - Use INSTRUCTIONS.md (not INTERVIEW_GUIDE.md or README.md)
 
 **What's complete vs incomplete now:**
 - ✅ **COMPLETE:** Models (with Codable), MockData.swift (realistic JSON)
@@ -534,27 +655,29 @@ The projects should be **bare bones** - just enough to work, nothing extra.
 
 **Why this matters:**
 - In real interviews, candidates write ALL the code including UI - having complete views defeats the purpose
-- Too many documentation files is overwhelming - consolidate into 2 essential files
+- API_SETUP.md helps users get real API keys for authentic networking experience
+- Mock data still provided as fallback for quick testing
 - Simple comments are cleaner and more realistic than step-by-step instructions
 - The interviewee should figure out implementation from INSTRUCTIONS.md, not from code comments
 
-### Session 2025-12-29: Mock Data vs Real APIs
+### Session 2025-12-29: Mock Data vs Real APIs (UPDATED)
 
 **What was corrected:**
-- User attempted to use real GitHub API in project 03 and got 404 errors
-- Real APIs require authentication, have rate limits, and add unnecessary complexity
+- Initially preferred mock data only, but user clarified real APIs are better for realistic interview experience
+- Mock data can be fallback, but real API integration is the goal
 
 **Corrections made:**
-1. **ALWAYS use MockData for implementation** - Interview projects should use the mock JSON data provided, NOT real API calls
-2. **API endpoints are for reference only** - Include realistic endpoint URLs in INSTRUCTIONS.md for context, but implementation should use MockData.swift
-3. **Focus on skills, not API troubleshooting** - Interview projects test Swift/SwiftUI/MVVM skills, not API key management
+1. **PREFER real APIs over mock data** - Interview projects should guide users to use real API calls when possible
+2. **Provide API setup instructions** - Create API_SETUP.md with clear instructions on getting API keys
+3. **Mock data as fallback** - Keep MockData.swift for quick testing or if API setup fails
+4. **Choose APIs wisely** - Prefer free APIs with easy signup or no authentication required
 
-**Implementation approach:**
-- Service layer should decode from MockData.swift (e.g., `JSONDecoder().decode(Type.self, from: MockData.someJSON)`)
-- User can optionally add real API integration as a bonus if time permits
-- No API keys required, no network dependencies, faster testing
+**API Selection Guidelines:**
+- **Best:** Free APIs with no authentication (e.g., some public government APIs, CoinGecko crypto API)
+- **Good:** Free APIs with simple API key signup (TMDB movies, OpenWeather, NewsAPI free tier)
+- **Avoid:** APIs requiring OAuth, credit cards, or complex authentication
 
-**Mock data should be realistic and rich:**
+**Mock data should be realistic and rich (as fallback):**
 - **MUST include 12-15 items minimum** (not just 3-5)
 - **For search apps:** Include diverse keywords/names across multiple categories
   - Example: GitHub repo search should have repos in Swift, JavaScript, Python, Go, Rust, Java, TypeScript, etc.
@@ -566,12 +689,16 @@ The projects should be **bare bones** - just enough to work, nothing extra.
 - **For category apps:** Include multiple distinct categories to force real categorization logic
 - **Goal:** User CANNOT just return all mock data - they MUST implement filtering/searching/sorting logic
 
+**Implementation approach:**
+- Primary: Real API integration with URLSession
+- Fallback: Mock data for testing/development
+- Both paths should use same models and decoding logic
+
 **Why this matters:**
-- Eliminates setup friction (no API keys, no rate limiting)
-- Provides reliable, repeatable testing experience
-- Keeps focus on coding skills rather than API troubleshooting
-- Rich mock data tests filtering/searching skills, not just JSON decoding
-- Faster iteration and testing during the 45-minute time limit
+- Real APIs provide authentic networking experience
+- Tests actual async/await implementation with URLSession
+- More realistic to actual interview expectations
+- Mock data still available as safety net for quick testing
 
 ---
 
